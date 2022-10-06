@@ -37,11 +37,24 @@ public class Board {
 	}
 
 	public void placePiece(Piece piece, Position position) {
-		if(thereIsAPiece(position)) {// Programação defensiva
+		if (thereIsAPiece(position)) {// Programação defensiva
 			throw new BoardException("There is already a piece on position " + position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
+	}
+
+	public Piece removePiece(Position position) {
+		if(!positionExists(position)) {//quando essa posição não existe
+			throw new BoardException("position not on the board");
+		}
+		if(piece(position) == null) {//se não tem nada nessa posição volta null
+			return null;
+		}
+		Piece aux = piece(position);//quando a peça for retirado volta null
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
 	}
 
 	public boolean positionExists(int row, int column) {// tem que ser maior que zero e menos que rows & columns
