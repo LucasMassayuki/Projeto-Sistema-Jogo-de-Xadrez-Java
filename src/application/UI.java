@@ -68,6 +68,9 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println("Turn : " + chessMatch.getTurn());//turn tal
 		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());//esperando ojogador de cor tal
+		if(chessMatch.getCheck()) {
+			System.out.println("CHECK!");
+		}
 	}
 	
 	// imprimir o tabuleiro com a peça selecionada com os movimentos possíveis em azul
